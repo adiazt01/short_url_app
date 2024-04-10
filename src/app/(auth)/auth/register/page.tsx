@@ -12,7 +12,11 @@ type FormData = {
 };
 
 export default function RegisterPage() {
-  const { register, handleSubmit } = useForm<FormData>();
+  const {
+    register,
+    handleSubmit,
+    formState: { isSubmitting, errors },
+  } = useForm<FormData>();
 
   const onSubmit: SubmitHandler<FormData> = async (data) => {
     await fetch("/api/auth/register", {
@@ -20,6 +24,8 @@ export default function RegisterPage() {
       body: JSON.stringify(data),
     });
   };
+
+  console.log(isSubmitting, errors);
 
   return (
     <div className="flex flex-col">
@@ -34,7 +40,9 @@ export default function RegisterPage() {
           {...register("password")}
           placeholder="Password"
         />
-        <Button type="submit">Login</Button>
+        <Button disabled={isSubmitting} type="submit">
+          Login
+        </Button>
       </form>
     </div>
   );
