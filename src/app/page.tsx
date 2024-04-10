@@ -1,4 +1,4 @@
-import { prisma } from "@/lib/db";
+import prisma from "@/lib/db";
 
 export default async function Home() {
   const data = await prisma.user.findMany();
