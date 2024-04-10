@@ -3,6 +3,8 @@
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { useForm, SubmitHandler } from "react-hook-form";
+import { signIn } from "next-auth/react";
+import { useRouter } from "next/navigation";
 
 type FormData = {
   email: string;
@@ -10,10 +12,29 @@ type FormData = {
 };
 
 export default function LoginPage() {
-  const { register, handleSubmit } = useForm<FormData>();
+  const {
+    register,
+    handleSubmit,
+    formState: { isSubmitting },
+  } = useForm<FormData>();
+  const router = useRouter();
 
-  const onSubmit: SubmitHandler<FormData> = (data) => {
-    console.log(data);
+  const onSubmit: SubmitHandler<FormData> = async (data) => {
+    try {
+      const login = await signIn("credentials", {
+        email: data.email,
+        password: data.password,
+        redirect: false,
+      });
+
+      console.log(login);
+
+      if (login?.ok) {
+        router.push("/");
+      }
+    } catch (error) {
+      console.error("An error occurred:", error);
+    }
   };
 
   return (
@@ -29,7 +50,9 @@ export default function LoginPage() {
           {...register("password")}
           placeholder="Password"
         />
-        <Button type="submit">Login</Button>
+        <Button disabled={isSubmitting} type="submit">
+          Login
+        </Button>
       </form>
     </div>
   );

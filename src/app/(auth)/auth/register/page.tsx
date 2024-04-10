@@ -6,7 +6,7 @@ import { SubmitHandler, useForm } from "react-hook-form";
 
 type FormData = {
   email: string;
-  name: string;
+  username: string;
   password: string;
   confirmPassword: string;
 };
@@ -35,6 +35,7 @@ export default function RegisterPage() {
         className="flex flex-col space-y-4"
       >
         <Input type="email" {...register("email")} placeholder="Email" />
+        <Input type="text" {...register("username")} placeholder="Username" />
         <Input
           type="password"
           {...register("password")}
