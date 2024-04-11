@@ -8,6 +8,7 @@ export const getUrlsByUserId = async () => {
     where: {
       userId: userId,
     },
+    take: 9,
   });
 
   return urls;

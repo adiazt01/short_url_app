@@ -17,13 +17,14 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import { Url } from "@prisma/client";
+import DropdownCardUrl from "../dropdowns/DropdownCardUrl";
 
 interface UrlCardProps {
   url: Url;
 }
 
 export default function UrlCard({ url }: UrlCardProps) {
-  const { shortUrl, url: longUrl } = url;
+  const { shortUrl, url: longUrl, clicks } = url;
 
   return (
     <Card className="overflow-hidden">
@@ -35,33 +36,13 @@ export default function UrlCard({ url }: UrlCardProps) {
           </CardDescription>
         </div>
         <div className="flex">
-          <DropdownMenu>
-            <DropdownMenuTrigger className="w-7 h-7 rounded-full border -mt-3">
-              <Bolt className="w-4 mx-auto h-4" />
-            </DropdownMenuTrigger>
-            <DropdownMenuContent>
-              <DropdownMenuLabel>Actions</DropdownMenuLabel>
-              <DropdownMenuSeparator />
-              <DropdownMenuItem>
-                <Eye className="w-4 h-4 mr-2" />
-                View
-              </DropdownMenuItem>
-              <DropdownMenuItem>
-                <Edit className="w-4 h-4 mr-2" />
-                Edit
-              </DropdownMenuItem>
-              <DropdownMenuItem>
-                <Trash className="w-4 h-4 mr-2" />
-                Delete
-              </DropdownMenuItem>
-            </DropdownMenuContent>
-          </DropdownMenu>
+          <DropdownCardUrl />
         </div>
       </CardHeader>
       <CardFooter className="flex justify-between items-center p-2">
         <div className="flex items-center">
           <Mouse className="w-4 h-4 mr-1" />
-          <span className="text-xs">{url.clicks} clicks</span>
+          <span className="text-xs">{clicks} clicks</span>
         </div>
       </CardFooter>
     </Card>

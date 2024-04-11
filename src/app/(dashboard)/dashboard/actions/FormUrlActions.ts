@@ -2,7 +2,7 @@
 
 import { getUserId } from "@/lib/auth";
 import { auth } from "../../../../../auth";
-import { urlSchema } from "../_schemas/FormSchemas";
+import { urlSchema } from "../schemas/FormSchemas";
 import prisma from "@/lib/db";
 
 export type FormState = {

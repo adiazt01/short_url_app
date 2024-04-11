@@ -1,6 +1,6 @@
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
-import { urlSchema } from "./_schemas/FormSchemas";
+import { urlSchema } from "./schemas/FormSchemas";
 import { z } from "zod";
 import { Button } from "@/components/ui/button";
 import {
@@ -13,8 +13,8 @@ import {
   FormMessage,
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
-import { createShortUrlAction } from "./_actions/FormUrlActions";
-import { getUrlsByUserId } from "./_lib/UrlData";
+import { createShortUrlAction } from "./actions/FormUrlActions";
+import { getUrlsByUserId } from "./lib/UrlData";
 import { Separator } from "@/components/ui/separator";
 import { Suspense } from "react";
 import UrlContainer from "./_components/container/UrlContainer";
