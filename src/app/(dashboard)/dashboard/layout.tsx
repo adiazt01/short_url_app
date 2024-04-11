@@ -1,6 +1,7 @@
-import { SessionProvider } from "next-auth/react";
-import { auth } from "../../../../auth";
 import { redirect } from "next/navigation";
+import { auth } from "../../../../auth";
+import Navbar from "./_components/Navbar";
+import { SessionProvider } from "next-auth/react";
 
 export default async function DashboardLayout({
   children,
@@ -15,7 +16,14 @@ export default async function DashboardLayout({
 
   return (
     <>
-      {children}
+      <SessionProvider>
+        <Navbar />
+        <main className="w-full flex flex-col justify-start items-center border pt-28  min-h-screen">
+          <div className="max-w-4xl border w-full border-red-500">
+          {children}
+            </div>
+        </main>
+      </SessionProvider>
     </>
   );
 }
