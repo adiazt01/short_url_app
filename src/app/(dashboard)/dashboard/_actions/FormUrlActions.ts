@@ -1,5 +1,6 @@
 "use server";
 
+import { getUserId } from "@/lib/auth";
 import { auth } from "../../../../../auth";
 import { urlSchema } from "../_schemas/FormSchemas";
 import prisma from "@/lib/db";
@@ -13,15 +14,6 @@ export type FormState = {
   };
 };
 
-export async function getUserId(): Promise<number> {
-  const user = await auth();
-
-  if (!user?.user?.sub) {
-    throw new Error("User not found");
-  }
-
-  return parseInt(user?.user?.sub);
-}
 
 export async function createShortUrlAction(data: FormData): Promise<FormState> {
   const formData = Object.fromEntries(data);

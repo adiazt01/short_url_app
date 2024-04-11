@@ -18,10 +18,8 @@ export default async function DashboardLayout({
     <>
       <SessionProvider>
         <Navbar />
-        <main className="w-full flex flex-col justify-start items-center border pt-28 bg-white md:bg-slate-100 min-h-screen transition">
-          <div className="max-w-4xl border w-full border-red-500">
-          {children}
-            </div>
+        <main className="w-full flex flex-col justify-start items-center pt-20 md:pt-28 bg-white md:bg-slate-100 min-h-screen transition">
+          <div className="max-w-4xl md:border w-full">{children}</div>
         </main>
       </SessionProvider>
     </>
