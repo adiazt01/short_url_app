@@ -7,25 +7,23 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
-import { Bolt, Edit, Eye, Mouse, Trash, User } from "lucide-react";
-import {
-  DropdownMenu,
-  DropdownMenuContent,
-  DropdownMenuItem,
-  DropdownMenuLabel,
-  DropdownMenuSeparator,
-  DropdownMenuTrigger,
-} from "@/components/ui/dropdown-menu";
-import { Url } from "@prisma/client";
+import { Mouse } from "lucide-react";
+import { Url as PrismaUrl, Click, Tag } from "@prisma/client";
 import DropdownCardUrl from "../dropdowns/DropdownCardUrl";
+
+interface Url extends PrismaUrl {
+  clicks: Click[];
+  tags: Tag[];
+}
 
 interface UrlCardProps {
   url: Url;
 }
 
 export default function UrlCard({ url }: UrlCardProps) {
-  const { shortUrl, url: longUrl, clicks } = url;
+  const { url: longUrl, shortUrl, clicks, tags } = url;
 
+  console.log(url);
   return (
     <Card className="overflow-hidden">
       <CardHeader className="flex justify-between items-center flex-row p-2">
@@ -42,7 +40,7 @@ export default function UrlCard({ url }: UrlCardProps) {
       <CardFooter className="flex justify-between items-center p-2">
         <div className="flex items-center">
           <Mouse className="w-4 h-4 mr-1" />
-          <span className="text-xs">{clicks} clicks</span>
+          <span className="text-xs"> {clicks && clicks.length} clicks</span>
         </div>
       </CardFooter>
     </Card>

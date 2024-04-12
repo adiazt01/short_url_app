@@ -8,8 +8,14 @@ export const getUrlsByUserId = async () => {
     where: {
       userId: userId,
     },
+    include:{
+      tags: true,
+      clicks: true,
+    },
     take: 9,
   });
+
+  console.log(urls);
 
   return urls;
 };
