@@ -8,12 +8,13 @@ import {
   CardTitle,
 } from "@/components/ui/card";
 import { Mouse } from "lucide-react";
-import { Url as PrismaUrl, Click, Tag } from "@prisma/client";
+import { Url as PrismaUrl, Click, Group } from "@prisma/client";
 import DropdownCardUrl from "../dropdowns/DropdownCardUrl";
+import { Badge } from "@/components/ui/badge";
 
 interface Url extends PrismaUrl {
   clicks: Click[];
-  tags: Tag[];
+  group: Group | null;
 }
 
 interface UrlCardProps {
@@ -21,9 +22,8 @@ interface UrlCardProps {
 }
 
 export default function UrlCard({ url }: UrlCardProps) {
-  const { url: longUrl, shortUrl, clicks, tags } = url;
+  const { url: longUrl, shortUrl, clicks } = url;
 
-  console.log(url);
   return (
     <Card className="overflow-hidden">
       <CardHeader className="flex justify-between items-center flex-row p-2">
@@ -42,6 +42,11 @@ export default function UrlCard({ url }: UrlCardProps) {
           <Mouse className="w-4 h-4 mr-1" />
           <span className="text-xs"> {clicks && clicks.length} clicks</span>
         </div>
+        {url.group && (
+          <div className="flex items-end">
+            <Badge className="text-xs">{url.group.name}</Badge>
+          </div>
+        )}
       </CardFooter>
     </Card>
   );

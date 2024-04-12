@@ -9,7 +9,7 @@ export const getUrlsByUserId = async () => {
       userId: userId,
     },
     include:{
-      tags: true,
+      group: true,
       clicks: true,
     },
     take: 9,

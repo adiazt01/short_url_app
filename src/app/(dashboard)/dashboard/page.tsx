@@ -1,27 +1,10 @@
-import { zodResolver } from "@hookform/resolvers/zod";
-import { useForm } from "react-hook-form";
-import { urlSchema } from "./url/schemas/FormSchemas";
-import { z } from "zod";
-import { Button } from "@/components/ui/button";
-import {
-  Form,
-  FormControl,
-  FormDescription,
-  FormField,
-  FormItem,
-  FormLabel,
-  FormMessage,
-} from "@/components/ui/form";
-import { Input } from "@/components/ui/input";
-import { createShortUrlAction } from "./url/actions/FormUrlActions";
-import { getUrlsByUserId } from "./lib/UrlData";
+import { buttonVariants } from "@/components/ui/button";
 import { Separator } from "@/components/ui/separator";
 import { Suspense } from "react";
 import UrlContainer from "./components/container/UrlContainer";
-import { Plus } from "lucide-react";
+import Link from "next/link";
 
 export default async function DashboardPage() {
-
   return (
     <div className="flex flex-col p-4 w-full">
       <div className="flex justify-between items-center">
@@ -30,11 +13,12 @@ export default async function DashboardPage() {
         </h1>
         <ul className="flex items-center space-x-4">
           <li>
-            <Button size="sm">
-              {" "}
-              <Plus className="mr-2 h-4 w-4" />
-              Create url
-            </Button>
+            <Link
+              href="dashboard/url/create"
+              className={buttonVariants({ variant: "outline" })}
+            >
+              Click here
+            </Link>
           </li>
         </ul>
       </div>
