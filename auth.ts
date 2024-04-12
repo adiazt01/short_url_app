@@ -2,7 +2,6 @@ import Credentials from "next-auth/providers/credentials";
 import NextAuth from "next-auth";
 import prisma from "@/lib/db";
 import * as argon2 from "argon2";
-import { createSearchParamsBailoutProxy } from "next/dist/client/components/searchparams-bailout-proxy";
 
 export const { auth, handlers, signIn, signOut } = NextAuth({
   providers: [
