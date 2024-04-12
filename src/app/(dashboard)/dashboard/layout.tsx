@@ -1,6 +1,7 @@
 import { redirect } from "next/navigation";
+// FIXME: import { auth } from "../../../../auth";
 import { auth } from "../../../../auth";
-import Navbar from "./_components/Navbar";
+import Navbar from "./components/Navbar";
 import { SessionProvider } from "next-auth/react";
 
 export default async function DashboardLayout({

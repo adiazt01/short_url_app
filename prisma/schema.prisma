@@ -18,11 +18,27 @@ model User {
   urls     Url[]
 }
 
+model Tag {
+  id   Int    @id @default(autoincrement())
+  name String @unique
+  urls Url[]  @relation("TagToUrl")
+}
+
 model Url {
-  id       Int    @id @default(autoincrement())
+  id       Int     @id @default(autoincrement())
   url      String
-  shortUrl String
-  user     User   @relation(fields: [userId], references: [id])
+  shortUrl String  @unique()
+  user     User    @relation(fields: [userId], references: [id])
   userId   Int
-  clicks   Int   @default(0)
+  tags     Tag[]   @relation("TagToUrl")
+  clicks   Click[]
+}
+
+model Click {
+  id        Int      @id @default(autoincrement())
+  createdAt DateTime @default(now())
+  url       Url      @relation(fields: [urlId], references: [id])
+  urlId     Int
+  userAgent String?
+  ip        String?
 }

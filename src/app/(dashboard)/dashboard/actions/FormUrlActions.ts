@@ -1,7 +1,6 @@
 "use server";
 
 import { getUserId } from "@/lib/auth";
-import { auth } from "../../../../../auth";
 import { urlSchema } from "../schemas/FormSchemas";
 import prisma from "@/lib/db";
 
@@ -13,7 +12,6 @@ export type FormState = {
     userId: number;
   };
 };
-
 
 export async function createShortUrlAction(data: FormData): Promise<FormState> {
   const formData = Object.fromEntries(data);
