@@ -42,7 +42,7 @@ export default function UrlCard({ url }: UrlCardProps) {
           <Mouse className="w-4 h-4 mr-1" />
           <span className="text-xs"> {clicks && clicks.length} clicks</span>
         </div>
-        {url.group && (
+        {url.group && url.group && (
           <div className="flex items-end">
             <Badge className="text-xs">{url.group.name}</Badge>
           </div>

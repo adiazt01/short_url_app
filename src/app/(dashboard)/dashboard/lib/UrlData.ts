@@ -4,6 +4,10 @@ import { getUserId } from "@/lib/auth";
 export const getUrlsByUserId = async () => {
   const userId = await getUserId();
 
+  if (!userId) {
+    return [];
+  }
+
   const urls = await prisma.url.findMany({
     where: {
       userId: userId,
@@ -12,7 +16,7 @@ export const getUrlsByUserId = async () => {
       group: true,
       clicks: true,
     },
-    take: 9,
+    take: 20,
   });
 
   console.log(urls);

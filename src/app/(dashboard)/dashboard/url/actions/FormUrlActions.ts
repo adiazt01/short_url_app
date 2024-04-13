@@ -5,15 +5,12 @@ import { urlSchema, groupSchema } from "../schemas/FormSchemas";
 import * as argon2 from "argon2";
 import prisma from "@/lib/db";
 import validUrl from "valid-url";
-import { Group } from "@prisma/client";
+import { Group, Url } from "@prisma/client";
 
 export type FormState = {
-  message: string;
-  data: {
-    url: string;
-    shortUrl: string;
-    userId: number;
-  } | null;
+  message?: string;
+  data?: Url;
+  error?: string;
 };
 
 export async function createShortUrlAction(data: FormData): Promise<FormState> {
@@ -55,7 +52,7 @@ export async function createShortUrlAction(data: FormData): Promise<FormState> {
     }
 
     // if the field group is not empty, get the group ID
-    if (parsed.data.group || parsed.data.group !== "") {
+    if (parsed.data.group !== undefined) {
       const group = await prisma.group.findFirst({
         where: { id: parseInt(parsed.data.group), userId: userId },
       });
@@ -97,15 +94,15 @@ export async function createShortUrlAction(data: FormData): Promise<FormState> {
     }
   } catch (error) {
     return {
-      message: (error as Error).message,
-      data: null,
+      error: (error as Error).message,
     };
   }
 }
 
 export type FormCreateUrlState = {
-  message: string;
-  data: Group | null;
+  message?: string;
+  data?: Group;
+  error?: string;
 };
 
 export async function createGroupAction(
