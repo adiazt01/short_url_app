@@ -50,6 +50,9 @@ model Click {
   id        Int      @id @default(autoincrement())
   url       Url      @relation(fields: [urlId], references: [id])
   urlId     Int
+  ip        String?
+  userAgent String?
+  referer   String?
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
 }
