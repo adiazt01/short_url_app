@@ -11,44 +11,44 @@ datasource db {
 }
 
 model User {
-  id       Int     @id @default(autoincrement())
-  email    String  @unique
-  password String
-  username String
-  urls     Url[]   // Un usuario puede tener muchas URLs
-  groups   Group[] // Un usuario puede tener muchos grupos
+  id        Int      @id @default(autoincrement())
+  email     String   @unique
+  password  String
+  username  String
+  urls      Url[]
+  groups    Group[]
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
 }
 
 model Group {
-  id     Int    @id @default(autoincrement())
-  name   String
-  urls   Url[]  // Un grupo puede tener muchas URLs
-  user   User   @relation(fields: [userId], references: [id])
-  userId Int
+  id        Int      @id @default(autoincrement())
+  name      String
+  urls      Url[]
+  user      User     @relation(fields: [userId], references: [id])
+  userId    Int
   createdAt DateTime @default(now())
 
   @@unique([name, userId])
 }
 
 model Url {
-  id       Int     @id @default(autoincrement())
-  url      String
-  label    String?
-  shortUrl String  @unique
-  user     User    @relation(fields: [userId], references: [id])
-  userId   Int
-  group    Group?  @relation(fields: [groupId], references: [id])
-  groupId  Int?
-  clicks   Click[]
+  id        Int      @id @default(autoincrement())
+  url       String
+  label     String?
+  shortUrl  String   @unique
+  user      User     @relation(fields: [userId], references: [id])
+  userId    Int
+  group     Group?   @relation(fields: [groupId], references: [id], onDelete: SetNull)
+  groupId   Int?
+  clicks    Click[]
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
 }
 
 model Click {
   id        Int      @id @default(autoincrement())
-  url       Url      @relation(fields: [urlId], references: [id])
+  url       Url      @relation(fields: [urlId], references: [id], onDelete: Cascade)
   urlId     Int
   ip        String?
   userAgent String?
