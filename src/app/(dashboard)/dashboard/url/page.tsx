@@ -2,29 +2,35 @@ import { Suspense } from "react";
 import { UrlContainerPagination } from "./components/UrlContainerPagination";
 import { SearchBar } from "./components/SearchBar";
 import Pagination from "./components/Pagination";
+import { FilterBar } from "./components/FilterBar";
 
 export default function UrlsPage({
   searchParams,
 }: {
   searchParams?: {
-    query?: string;
+    searchTerm?: string;
     page?: string;
+    group?: string;
   };
 }) {
   if (!searchParams) {
     searchParams = {
-      query: "",
+      searchTerm: "",
+      page: "1",
+      group: "",
     };
   }
 
   return (
     <div className="flex flex-col gap-4 py-4">
       <SearchBar />
+      <FilterBar />
       <Suspense fallback={<div>Loading...</div>}>
         <UrlContainerPagination
           page={searchParams.page ? Number(searchParams.page) : 1}
-          limit={5}
-          query={searchParams.query}
+          limit={6}
+          group={searchParams.group}
+          searchTerm={searchParams.searchTerm}
         />
       </Suspense>
     </div>
