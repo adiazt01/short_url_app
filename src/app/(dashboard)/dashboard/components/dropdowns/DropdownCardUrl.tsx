@@ -15,12 +15,8 @@ import { Url } from "@prisma/client";
 import { DialogCardCopyUrl } from "../dialog/DialogCardCopyUrl";
 import { DialogCardDeleteUrl } from "../dialog/DialogCardDeleteUrl";
 
-export function DropdownCardUrl({ url }):{
-  url: Url;
-} {
+export function DropdownCardUrl({ url }:{ url: Url }) {
   const { shortUrl, id } = url;
-
-  console.log(id);
 
   return (
     <Dialog>

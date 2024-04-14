@@ -19,8 +19,9 @@ export default function Navbar() {
           <a href="/" className="text-lg font-bold">
             Shortify
           </a>
-          <nav className="flex flex-row justify-between items-center">
+          <nav className="flex flex-row justify-between items-center gap-4">
             <Link href="/dashboard">Dashboard</Link>
+            <Link href="/dashboard/url">Urls</Link>
           </nav>
         </div>
       </div>
