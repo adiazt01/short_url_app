@@ -47,7 +47,7 @@ export const getUrlsWithPagination = async (page: number, limit: number, query: 
   };
 
   // Conditionally assign the group property
-  if (group !== "None") {
+  if (group && group !== "None") {
     where.group = {
       name: {
         contains: group,

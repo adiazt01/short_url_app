@@ -8,15 +8,16 @@ export const { auth, handlers, signIn, signOut } = NextAuth({
     Credentials({
       name: "Credentials",
       credentials: {
-        email: { label: "email", type: "text" },
+        email: { label: "email", type: "text",  },
         password: { label: "password", type: "password" },
       },
-      async authorize(credentials) {
-        if (!credentials) throw new Error("No credentials");
-
+    authorize: async (credentials) => {
         // Find user in the database
+        if (!credentials.email) throw new Error("No email provided");
+        if (!credentials.password) throw new Error("No password provided");
+
         const userFound = await prisma.user.findUnique({
-          where: { email: credentials.email },
+          where: { email: credentials.email as string },
         });
 
         // If no user found, return null
@@ -25,7 +26,7 @@ export const { auth, handlers, signIn, signOut } = NextAuth({
         // If user found, compare password
         const passwordMatch = await argon2.verify(
           userFound.password,
-          credentials.password
+          credentials.password as string
         );
 
         // If password doesn't match, return null
@@ -35,13 +36,14 @@ export const { auth, handlers, signIn, signOut } = NextAuth({
         return {
           name: userFound.username,
           email: userFound.email,
-          id: userFound.id,
+          id: userFound.id.toString(),
         };
       },
     }),
   ],
   callbacks: {
     async session({ session, token }) {
+      // @ts-ignore
       session.user = token;
       return session;
     },

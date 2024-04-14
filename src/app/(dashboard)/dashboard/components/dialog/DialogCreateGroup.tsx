@@ -35,7 +35,6 @@ export function DialogCreateGroup({
   setGroups: React.Dispatch<React.SetStateAction<Group[]>>;
   setOpen: (open: boolean) => void;
 }) {
-  const router = useRouter();
   const form = useForm<z.infer<typeof groupSchema>>({
     resolver: zodResolver(groupSchema),
     defaultValues: { group: "" },
@@ -56,7 +55,10 @@ export function DialogCreateGroup({
           message: res.error
         });
       } else {
-        setGroups((prev) => [...prev, res.data]);
+        if (res.data) {
+          // @ts-ignore
+          setGroups((prev) => [...prev, res.data]);
+        }
         setOpen(false);
       }
     } catch (error) {
@@ -95,7 +97,7 @@ export function DialogCreateGroup({
                     The group will be used to organize your URLs
                   </FormDescription>
                   <FormMessage>
-                    {form.formState.errors.url?.message}
+                    {form.formState.errors.group?.message}
                   </FormMessage>
                 </FormItem>
               )}

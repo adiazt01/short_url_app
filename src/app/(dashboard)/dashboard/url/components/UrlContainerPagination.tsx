@@ -22,6 +22,7 @@ export async function UrlContainerPagination({
   return (
     <div className="flex flex-col gap-4">
       <ul className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
+        {/* @ts-ignore */}
         {urls && urls.map((url) => <UrlCard key={url.id} url={url} />)}
       </ul>
       <Pagination totalPages={totalPages} />
