@@ -155,3 +155,37 @@ export async function createGroupAction(
     };
   }
 }
+
+type DeleteUrlState = {
+  message?: string;
+  data?: Url;
+  error?: string;
+};
+
+
+export async function deleteUrl(id: number): Promise<DeleteUrlState>{
+  const userId = await getUserId();
+
+  // If the user is not logged in, return an empty array
+  if (!userId) {
+    throw new Error("User not found");
+  }
+
+  // Delete the url
+  console.log(id);
+  console.log(typeof id)
+
+
+  const url = await prisma.url.delete({
+    where: {
+      userId: userId,
+      id: id,
+    },
+  });
+
+  return {
+    message: "URL deleted successfully",
+    data: url,
+  };
+};
+

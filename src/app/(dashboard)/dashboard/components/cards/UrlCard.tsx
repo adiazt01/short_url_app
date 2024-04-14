@@ -38,13 +38,17 @@ export default function UrlCard({ url }: UrlCardProps) {
         </div>
       </CardHeader>
       <CardFooter className="flex justify-between items-center p-2">
-        <div className="flex items-center">
+        <div className="flex flex-row items-center">
           <Mouse className="w-4 h-4 mr-1" />
           <span className="text-xs"> {clicks && clicks.length} clicks</span>
         </div>
         {url.group && url.group && (
           <div className="flex items-end">
-            <Badge className="text-xs">{url.group.name}</Badge>
+            <Badge className="text-xs max-w-32 truncate text-left">
+              {
+                url.group.name.length > 20 ? url.group.name.substring(0, 10) + "..." : url.group.name 
+              }
+            </Badge>
           </div>
         )}
       </CardFooter>
