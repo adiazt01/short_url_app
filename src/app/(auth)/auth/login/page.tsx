@@ -15,22 +15,22 @@ export default function LoginPage() {
   const {
     register,
     handleSubmit,
-    formState: { isSubmitting },
+    formState: { isSubmitting, errors},
   } = useForm<FormData>();
   const router = useRouter();
 
   const onSubmit: SubmitHandler<FormData> = async (data) => {
     try {
+      console.log(data);
       const login = await signIn("credentials", {
         email: data.email,
         password: data.password,
         redirect: false,
+        callbackUrl: "/dashboard",
       });
 
-      console.log(login);
-
-      if (login?.ok) {
-        router.push("/");
+      if (!login?.error) {
+        router.push("/dashboard");
       }
     } catch (error) {
       console.error("An error occurred:", error);
@@ -45,14 +45,19 @@ export default function LoginPage() {
         className="flex flex-col space-y-4"
       >
         <Input type="email" {...register("email")} placeholder="Email" />
+        {errors.email && <span>{errors.email.message}</span>}
         <Input
           type="password"
           {...register("password")}
           placeholder="Password"
         />
+        {errors.password && <span>{errors.password.message}</span>}
         <Button disabled={isSubmitting} type="submit">
           Login
         </Button>
+        {
+          errors.root && <span>{errors.root.message}</span>
+        }
       </form>
     </div>
   );

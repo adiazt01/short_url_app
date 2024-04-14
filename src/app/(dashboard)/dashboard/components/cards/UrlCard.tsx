@@ -9,7 +9,7 @@ import {
 } from "@/components/ui/card";
 import { Mouse } from "lucide-react";
 import { Url as PrismaUrl, Click, Group } from "@prisma/client";
-import DropdownCardUrl from "../dropdowns/DropdownCardUrl";
+import { DropdownCardUrl } from "../dropdowns/DropdownCardUrl";
 import { Badge } from "@/components/ui/badge";
 
 interface Url extends PrismaUrl {
@@ -34,7 +34,7 @@ export default function UrlCard({ url }: UrlCardProps) {
           </CardDescription>
         </div>
         <div className="flex">
-          <DropdownCardUrl />
+          <DropdownCardUrl url={url} />
         </div>
       </CardHeader>
       <CardFooter className="flex justify-between items-center p-2">

@@ -13,7 +13,7 @@ export default function Navbar() {
   // TODO add user profile button
 
   return (
-    <header className="fixed  w-full flex items-center px-8 py-1.5 top-0 h-16 bg-white border-b shadow-sm md:shadow transition">
+    <header className="fixed w-full flex items-center px-8 py-1.5 top-0 h-16 bg-white dark:bg-black border-b shadow-sm md:shadow transition">
       <div className="flex items-center justify-between w-full md:max-w-4xl mx-auto">
         <div className="flex w-full flex-row justify-between items-center">
           <a href="/" className="text-lg font-bold">

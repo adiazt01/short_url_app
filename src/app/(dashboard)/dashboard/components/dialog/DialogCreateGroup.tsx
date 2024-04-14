@@ -26,6 +26,7 @@ import {
 import { createGroupAction } from "../../url/actions/FormUrlActions";
 import { useRouter } from "next/navigation";
 import { Loader } from "lucide-react";
+import { Group } from "@prisma/client";
 
 export function DialogCreateGroup({
   setOpen,
