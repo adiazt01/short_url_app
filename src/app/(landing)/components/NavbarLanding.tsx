@@ -32,7 +32,7 @@ export default function NavbarLading() {
     <header className="sticky w-full top-0 flex justify-center items-center flex-row h-14 border-b backdrop-blur bg-white/50 dark:bg-black/50">
       <div className="flex justify-between items-center text-sm w-full max-w-4xl px-4">
         <Link className="font-bold" href="/">
-          Shortify
+        ShortBuddy
         </Link>
         <ul className="flex items-center flex-row gap-2 text-sm">
           <DropdownMenu>

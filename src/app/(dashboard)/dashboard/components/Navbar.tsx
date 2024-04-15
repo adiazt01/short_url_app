@@ -17,7 +17,7 @@ export default function Navbar() {
       <div className="flex items-center justify-between w-full md:max-w-4xl mx-auto">
         <div className="flex w-full flex-row justify-between items-center">
           <a href="/" className="text-lg font-bold">
-            Shortify
+            ShortBuddy
           </a>
           <nav className="flex flex-row justify-between items-center gap-4">
             <Link href="/dashboard">Dashboard</Link>
