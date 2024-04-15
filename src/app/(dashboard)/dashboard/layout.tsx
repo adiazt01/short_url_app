@@ -4,10 +4,10 @@ import { auth } from "../../../../auth";
 import Navbar from "./components/Navbar";
 import { SessionProvider } from "next-auth/react";
 import { Toaster } from "@/components/ui/toaster";
-import "../../globals.css";
-
+import "../../globals.css"
 import BreadcrumbDashboard from "./components/BreadcrumbDashboard";
 import { Metadata } from "next";
+import { ThemeProvider } from "next-themes";
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -29,16 +29,23 @@ export default async function DashboardLayout({
     <html lang="en" suppressHydrationWarning>
       <body>
         <SessionProvider>
-          <Navbar />
-          <main className="w-full flex flex-col justify-start items-center pt-8 bg-white dark:bg-black transition">
-            <div className="max-w-[50rem] px-8 w-full">
-              <div className="flex mb-4 mt-16 flex-row items-start">
-                <BreadcrumbDashboard />
+          <ThemeProvider
+            attribute="class"
+            defaultTheme="system"
+            enableSystem={true}
+            disableTransitionOnChange
+          >
+            <Navbar />
+            <main className="w-full flex flex-col justify-start items-center pt-8 bg-white dark:bg-black transition">
+              <div className="max-w-[50rem] px-8 w-full">
+                <div className="flex mb-4 mt-16 flex-row items-start">
+                  <BreadcrumbDashboard />
+                </div>
+                {children}
+                <Toaster />
               </div>
-              {children}
-          <Toaster />
-            </div>
-          </main>
+            </main>
+          </ThemeProvider>
         </SessionProvider>
       </body>
     </html>
