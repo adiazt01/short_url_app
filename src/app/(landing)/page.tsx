@@ -7,11 +7,11 @@ export default function HomePage() {
   /* FIXME end */
   return (
     <>
-      <main className="mt-28 min-h-screen">
+      <main className="mt-40">
         <div className="flex flex-col w-full justify-center items-center">
           <header className="flex flex-col items-center">
-            <Badge variant={"secondary"} className="mb-4 py-1.5 px-2">
-              <Github className="w-4 h-4 ml-2" />
+            <Badge variant={"secondary"} className="mb-4 shadow py-1.5 px-2">
+              <Github className="w-4 h-4 mr-1.5" />
               In continuos development
             </Badge>
             <h1 className="scroll-m-20 text-center text-5xl font-extrabold tracking-tight md:text-7xl">
@@ -43,7 +43,7 @@ export default function HomePage() {
           </div>
         </div>
       </main>
-      <div className="bg-white dark:bg-black py-24 sm:py-32">
+      <section className="bg-white dark:bg-black">
         <div className="mx-auto max-w-7xl px-6 lg:px-8">
           <div className="mx-auto max-w-2xl lg:text-center">
             <small className="text-sm font-medium leading-none">
@@ -57,7 +57,7 @@ export default function HomePage() {
               with your friends and track the number of clicks.
             </p>
           </div>
-          <section className="mx-auto mt-16 max-w-2xl sm:mt-20 lg:mt-24 lg:max-w-4xl">
+          <div className="mx-auto mt-16 max-w-2xl sm:mt-20 lg:mt-24 lg:max-w-4xl">
             <div className="grid max-w-xl grid-cols-1 gap-x-8 gap-y-10 lg:max-w-none lg:grid-cols-2 lg:gap-y-16">
               <div className="relative pl-16">
                 <div className="text-base font-semibold leading-7 text-gray-900">
@@ -161,9 +161,9 @@ export default function HomePage() {
                 </dd>
               </div>
             </div>
-          </section>
+          </div>
         </div>
-      </div>
+      </section>
     </>
   );
 }

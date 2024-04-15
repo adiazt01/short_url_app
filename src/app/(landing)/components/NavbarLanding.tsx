@@ -8,7 +8,16 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import Link from "next/link";
-import { LayoutDashboard, LogOut, Moon, Sun, User } from "lucide-react";
+import {
+  Computer,
+  LayoutDashboard,
+  LogOut,
+  Moon,
+  MoonIcon,
+  Sun,
+  SunIcon,
+  User,
+} from "lucide-react";
 import { useTheme } from "next-themes";
 import { Button } from "@/components/ui/button";
 import { useRouter } from "next/navigation";
@@ -20,7 +29,7 @@ export default function NavbarLading() {
   const router = useRouter();
 
   return (
-    <header className="sticky w-full top-0 flex justify-center items-center flex-row h-14 border-b backdrop-blur bg-black bg-opacity-50">
+    <header className="sticky w-full top-0 flex justify-center items-center flex-row h-14 border-b backdrop-blur bg-white/50 dark:bg-black/50">
       <div className="flex justify-between items-center text-sm w-full max-w-4xl px-4">
         <Link className="font-bold" href="/">
           Shortify
@@ -30,7 +39,7 @@ export default function NavbarLading() {
             <DropdownMenuTrigger asChild>
               <Button
                 variant="outline"
-                className="h-7 rounded border w-7"
+                className="h-8 w-8 rounded-full border"
                 size="icon"
               >
                 <Sun className="h-[1.2rem] w-[1.2rem] rotate-0 scale-100 transition-all dark:-rotate-90 dark:scale-0 rounded-full" />
@@ -40,12 +49,15 @@ export default function NavbarLading() {
             </DropdownMenuTrigger>
             <DropdownMenuContent align="end">
               <DropdownMenuItem onClick={() => setTheme("light")}>
+                <SunIcon className="w-5 h-5 mr-2" />
                 Light
               </DropdownMenuItem>
               <DropdownMenuItem onClick={() => setTheme("dark")}>
+                <MoonIcon className="w-5 h-5 mr-2" />
                 Dark
               </DropdownMenuItem>
               <DropdownMenuItem onClick={() => setTheme("system")}>
+                <Computer className="w-5 h-5 mr-2" />
                 System
               </DropdownMenuItem>
             </DropdownMenuContent>

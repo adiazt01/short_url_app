@@ -32,7 +32,7 @@ export default async function DashboardLayout({
           <Navbar />
           <main className="w-full flex flex-col justify-start items-center pt-8 bg-white dark:bg-black transition">
             <div className="max-w-[50rem] px-8 w-full">
-              <div className="flex mb-4 mt-4 flex-row items-start">
+              <div className="flex mb-4 mt-16 flex-row items-start">
                 <BreadcrumbDashboard />
               </div>
               {children}
