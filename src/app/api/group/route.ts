@@ -18,6 +18,6 @@ export async function GET(req: NextRequest) {
 
     return NextResponse.json(groups);
   } catch (error) {
-    return NextResponse.error(error);
+    return NextResponse.json({ message: "Error fetching groups" })
   }
 }

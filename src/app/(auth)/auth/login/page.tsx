@@ -15,7 +15,7 @@ export default function LoginPage() {
   const {
     register,
     handleSubmit,
-    formState: { isSubmitting, errors},
+    formState: { isSubmitting, errors },
   } = useForm<FormData>();
   const router = useRouter();
 
@@ -55,9 +55,7 @@ export default function LoginPage() {
         <Button disabled={isSubmitting} type="submit">
           Login
         </Button>
-        {
-          errors.root && <span>{errors.root.message}</span>
-        }
+        {errors.root && <span>{errors.root.message}</span>}
       </form>
     </div>
   );

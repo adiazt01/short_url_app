@@ -2,6 +2,7 @@
 
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
+import { useRouter } from "next/navigation";
 import { SubmitHandler, useForm } from "react-hook-form";
 
 type FormData = {
@@ -17,15 +18,20 @@ export default function RegisterPage() {
     handleSubmit,
     formState: { isSubmitting, errors },
   } = useForm<FormData>();
+  const router = useRouter();
 
   const onSubmit: SubmitHandler<FormData> = async (data) => {
-    await fetch("/api/auth/register", {
+    const res = await fetch("/api/auth/register", {
       method: "POST",
       body: JSON.stringify(data),
     });
-  };
 
-  console.log(isSubmitting, errors);
+    if (res.ok) {
+      router.push("/dashboard");
+    } else {
+      const error = await res.json();
+    }
+  };
 
   return (
     <div className="flex flex-col">
