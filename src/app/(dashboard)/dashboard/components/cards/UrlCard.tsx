@@ -25,7 +25,7 @@ export default function UrlCard({ url }: UrlCardProps) {
   const { url: longUrl, shortUrl, clicks } = url;
 
   return (
-    <Card className="overflow-hidden">
+    <Card className="min-h-24 flex flex-col justify-between overflow-hidden">
       <CardHeader className="flex justify-between items-center flex-row p-2">
         <div className="flex w-3/4 flex-col">
           <CardTitle className="text-sm truncate">{shortUrl}</CardTitle>

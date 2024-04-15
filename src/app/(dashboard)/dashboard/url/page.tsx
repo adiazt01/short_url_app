@@ -3,6 +3,7 @@ import { UrlContainerPagination } from "./components/UrlContainerPagination";
 import { SearchBar } from "./components/SearchBar";
 import Pagination from "./components/Pagination";
 import { FilterBar } from "./components/FilterBar";
+import CardContainerSkeleton from "../components/skeleton/CardContainerSkeleton";
 
 export default function UrlsPage({
   searchParams,
@@ -25,7 +26,7 @@ export default function UrlsPage({
     <div className="flex flex-col gap-4 py-4">
       <SearchBar />
       <FilterBar />
-      <Suspense fallback={<div>Loading...</div>}>
+      <Suspense fallback={<CardContainerSkeleton />}>
         <UrlContainerPagination
           page={searchParams.page ? Number(searchParams.page) : 1}
           limit={6}

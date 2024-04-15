@@ -3,22 +3,34 @@
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
+import { useDebounce } from "../hooks/useDebounce";
+import { useEffect, useState } from "react";
 
 export function SearchBar() {
   const searchParams = useSearchParams();
   const pathname = usePathname();
   const { replace } = useRouter();
+  const [searchTerm, setSearchTerm] = useState(
+    searchParams.get("searchTerm")?.toString()
+  );
+  const debouncedSearchTerm = useDebounce(searchTerm, 500);
+
+  useEffect(() => {
+    handleSearch(debouncedSearchTerm || '');
+  }, [debouncedSearchTerm]);
 
   const handleSearch = (term: string) => {
-    const params = new URLSearchParams(searchParams);
+    console.log("searching for", term);
+    const newSearchParams = new URLSearchParams(searchParams.toString());
+
     if (term) {
-      params.set("searchTerm", term);
-      params.set("page", "1");
+      newSearchParams.set("searchTerm", term);
+      newSearchParams.set("page", "1");
     } else {
-      params.delete("searchTerm");
+      newSearchParams.delete("searchTerm");
     }
 
-    replace(`${pathname}?${params.toString()}`);
+    replace(`${pathname}?${newSearchParams.toString()}`);
   };
 
   return (
@@ -28,10 +40,8 @@ export function SearchBar() {
         placeholder="Web of cats, Wikipedia of dogs, Facebook group..."
         type="search"
         className="mt-2"
-        onChange={(event) => {
-          handleSearch(event.target.value);
-        }}
-        defaultValue={searchParams.get("searchTerm")?.toString()}
+        value={searchTerm}
+        onChange={(e) => setSearchTerm(e.target.value)}
       />
     </Label>
   );

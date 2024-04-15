@@ -3,6 +3,7 @@ import { Separator } from "@/components/ui/separator";
 import { Suspense } from "react";
 import UrlContainer from "./components/container/UrlContainer";
 import Link from "next/link";
+import CardContainerSkeleton from "./components/skeleton/CardContainerSkeleton";
 
 export default async function DashboardPage() {
   return (
@@ -23,7 +24,7 @@ export default async function DashboardPage() {
         </ul>
       </div>
       <Separator className="my-4" />
-      <Suspense fallback={<div>Loading...</div>}>
+      <Suspense fallback={<CardContainerSkeleton />}>
         <UrlContainer />
       </Suspense>
     </div>
