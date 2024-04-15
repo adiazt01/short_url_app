@@ -69,7 +69,7 @@ export default function HomePage() {
           </div>
         </div>
       </main>
-      <section className="bg-white dark:bg-black">
+      <section className="bg-white min-h-screen dark:bg-black">
         <div className="mx-auto max-w-7xl px-6 lg:px-8">
           <div className="mx-auto max-w-2xl lg:text-center">
             <small className="text-sm font-medium leading-none">

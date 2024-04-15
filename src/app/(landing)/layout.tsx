@@ -4,6 +4,7 @@ import "../globals.css";
 import { SessionProvider } from "next-auth/react";
 import NavbarLading from "./components/NavbarLanding";
 import { ThemeProvider } from "./context/ThemeProvider";
+import { FooterLanding } from "./components/FooterLanding";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -29,6 +30,7 @@ export default function RootLayout({
           >
             <NavbarLading />
             <div className="w-full flex gap-72 flex-col max-w-4xl mx-auto">{children}</div>
+            <FooterLanding />
           </ThemeProvider>
         </SessionProvider>
       </body>
