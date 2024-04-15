@@ -16,7 +16,9 @@ export async function POST(request: NextRequest) {
   // If the user already exists, return an error message
   if (userExists) {
     return NextResponse.json({
-      message: "User already exists",
+      error: "User or email already exists",
+    }, {
+      status: 400,
     });
   }
 
@@ -31,8 +33,6 @@ export async function POST(request: NextRequest) {
       username,
     },
   });
-
-  console.log(newUser);
 
   // Return the new user
   return NextResponse.json(newUser);
