@@ -19,7 +19,8 @@ export function DialogCardCopyUrl({ shortUrl }: { shortUrl: string }) {
   const { toast } = useToast();
   const path = usePathname();	
   const inputRef = useRef<HTMLInputElement>(null);
-  console.log(path);
+
+  console.log(  `${process.env.NEXT_PUBLIC_SITE_URL}${path}/${shortUrl}`)
 
   const handleCopy = () => {
     if (inputRef.current) {
@@ -49,7 +50,9 @@ export function DialogCardCopyUrl({ shortUrl }: { shortUrl: string }) {
             Click the button below to copy the URL to your clipboard.
           </DialogDescription>
           <div className="flex gap-4 flex-row justify-center">
-            <Input readOnly ref={inputRef} value={shortUrl} />
+            <Input readOnly ref={inputRef} value={
+              `https://short-url-app-kappa.vercel.app/api/su/${shortUrl}`
+            } />
             <DialogClose>
               <Button onClick={() => handleCopy()}>
                 <Copy className="w-4 h-4 mr-4" />
