@@ -37,20 +37,6 @@ export default function Navbar() {
             ShortBuddy
           </a>
           <nav className="flex flex-row justify-between items-center font-medium gap-3">
-            <Link
-              className="flex flex-row gap-1 items-center"
-              href="/dashboard"
-            >
-              <Home className="w-4 mb-0.5 h-4" />
-              <span>Dashboard</span>
-            </Link>
-            <Link
-              className="flex flex-row gap-1 items-center"
-              href="/dashboard/url"
-            >
-              <Link2 className="w-4 h-4" />
-              <span>URL&apos;s</span>
-            </Link>
             <DropdownMenu>
               <DropdownMenuTrigger asChild>
                 <Button
@@ -92,6 +78,10 @@ export default function Navbar() {
                 <DropdownMenuItem onClick={() => router.push("/dashboard")}>
                   <LayoutDashboard className="w-5 h-5 mr-2" />
                   Dashboard
+                </DropdownMenuItem>
+                <DropdownMenuItem onClick={() => router.push("/dashboard/url")}>
+                  <Link2 className="w-5 h-5 mr-2" />
+                  Urls
                 </DropdownMenuItem>
                 <DropdownMenuItem onClick={() => signOut()}>
                   <LogOut className="w-5 h-5 mr-2" />

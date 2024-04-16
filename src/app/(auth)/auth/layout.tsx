@@ -24,7 +24,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
             disableTransitionOnChange
           >
             <NavbarLading />
-            <div className="w-full flex flex-col justify-center items-center mt-16">
+            <div className="bg-white dark:bg-black w-full flex flex-col justify-center items-center mt-16">
               <div className="border p-5 shadow w-full rounded max-w-sm">
                 {children}
               </div>

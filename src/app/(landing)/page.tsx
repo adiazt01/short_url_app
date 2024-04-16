@@ -33,7 +33,7 @@ const features = [
 export default function HomePage() {
   return (
     <>
-      <main className="mt-40">
+      <main className="mt-40 bg-white dark:bg-black">
         <div className="flex flex-col w-full justify-center items-center">
           <header className="flex flex-col items-center">
             <Badge variant={"secondary"} className="mb-4 shadow py-1.5 px-2">

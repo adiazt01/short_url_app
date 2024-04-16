@@ -2,7 +2,7 @@ import Link from "next/link";
 
 export function FooterLanding() {
   return (
-    <footer className="rounded-lg shadow m-4">
+    <footer className="rounded-lg bg-white dark:bg-black shadow m-4">
       <div className="w-full max-w-4xl mx-auto p-4 md:py-8">
         <div className="sm:flex sm:items-center sm:justify-between">
           <a

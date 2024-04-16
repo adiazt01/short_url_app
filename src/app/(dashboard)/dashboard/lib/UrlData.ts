@@ -23,3 +23,41 @@ export const getDashboardUrls = async () => {
 
   return urls;
 };
+
+export const getTotalClicks = async () => {
+  const userId = await getUserId();
+
+  // If the user is not logged in, return 0
+  if (!userId) {
+    return 0;
+  }
+
+  // Get the total number of clicks for the user
+  const totalClicks = await prisma.click.count({
+    where: {
+      url: {
+        userId: userId,
+      },
+    },
+  });
+
+  return totalClicks;
+}
+
+export const getTotalUrlsCreated = async () => {
+  const userId = await getUserId();
+
+  // If the user is not logged in, return 0
+  if (!userId) {
+    return 0;
+  }
+
+  // Get the total number of urls created by the user
+  const totalUrlsCreated = await prisma.url.count({
+    where: {
+      userId: userId,
+    },
+  });
+
+  return totalUrlsCreated;
+}

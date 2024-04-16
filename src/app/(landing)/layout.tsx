@@ -29,7 +29,9 @@ export default function RootLayout({
             disableTransitionOnChange
           >
             <NavbarLading />
-            <div className="w-full flex gap-72 flex-col max-w-4xl mx-auto">{children}</div>
+            <div className="w-full bg-white dark:bg-black flex gap-72 flex-col max-w-4xl mx-auto">
+              {children}
+            </div>
             <FooterLanding />
           </ThemeProvider>
         </SessionProvider>
