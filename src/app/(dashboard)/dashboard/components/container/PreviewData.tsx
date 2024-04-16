@@ -13,7 +13,7 @@ export async function PreviewData() {
   const totalUrlsCreated = await getTotalUrlsCreated();
   return (
     <>
-      <Card className="w-full">
+      <Card className="min-h-28 w-full">
         <CardHeader>
           <CardTitle className="flex flex-row justify-between text-lg items-center">
             Total Clicks
@@ -22,7 +22,7 @@ export async function PreviewData() {
           <CardContent className="p-0 font-medium text-2xl">{totalClicks}</CardContent>
         </CardHeader>
       </Card>
-      <Card className="w-full">
+      <Card className="w-full min-h-28">
         <CardHeader>
           <CardTitle className="flex flex-row justify-between text-lg items-center">
             Total URLs Created

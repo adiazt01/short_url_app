@@ -6,6 +6,7 @@ import Link from "next/link";
 import CardContainerSkeleton from "./components/skeleton/CardContainerSkeleton";
 import { PreviewData } from "./components/container/PreviewData";
 import { Plus } from "lucide-react";
+import PreviewDataSkeleton from "./components/skeleton/PreviewDataSkeleton";
 
 export default async function DashboardPage() {
   return (
@@ -29,7 +30,9 @@ export default async function DashboardPage() {
           </div>
           <Separator className="mb-4" />
           <div className="flex gap-4 flex-col sm:flex-row w-full">
-            <PreviewData />
+            <Suspense fallback={<PreviewDataSkeleton />}>
+              <PreviewData />
+            </Suspense>
           </div>
         </header>
       </section>
